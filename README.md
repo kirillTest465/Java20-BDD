@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/dxsg8b3u73s4nod2?svg=true)](https://ci.appveyor.com/project/kirillTest465/java20-bdd)
