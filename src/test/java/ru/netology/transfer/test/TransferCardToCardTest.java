@@ -19,6 +19,7 @@ public class TransferCardToCardTest {
     int secondCardBalance;
 
 
+    // действия выполняемые перед тестами
     @BeforeEach
     void setup() {
         var loginPage = open("http://localhost:9999", LoginPage.class);
@@ -33,16 +34,19 @@ public class TransferCardToCardTest {
 
     }
 
+
     @Test
     public void shouldTransferFromFirstToSecond() {
         var amount = DataUser.generateValidAmount(firstCardBalance);
         var expectedBalanceFirtCard = firstCardBalance - amount;
         var expectedBalanceSecondCard = secondCardBalance + amount;
         var transferPage = dashboardPage.selectCardToTransfer(secondCardInfo);
+
         dashboardPage = transferPage.makeValidTransfer(String.valueOf(amount), firstCardInfo);
         dashboardPage.reloadDashboardPage();
         var actualBalanceFirstCard = dashboardPage.getcardBalance(firstCardInfo);
         var actualBalanceSecondCard = dashboardPage.getcardBalance(secondCardInfo);
+
         assertAll(() -> assertEquals(expectedBalanceFirtCard, actualBalanceFirstCard),
                 () -> assertEquals(expectedBalanceSecondCard, actualBalanceSecondCard));
     }
@@ -51,7 +55,9 @@ public class TransferCardToCardTest {
     public void shouldGetErrorMessageIdAmountMoreBalance() {
         var amount = DataUser.generateInvalidAmount(secondCardBalance);
         var transferPage = dashboardPage.selectCardToTransfer(firstCardInfo);
+
         transferPage.makeValidTransfer(String.valueOf(amount), secondCardInfo);
+
         assertAll(() -> transferPage.findErrrorMessage("Выполена попытка перевода суммы, превышающей остаток на карте списания"),
                 () -> dashboardPage.reloadDashboardPage(),
                 () -> assertEquals(firstCardBalance, dashboardPage.getcardBalance(firstCardInfo)),

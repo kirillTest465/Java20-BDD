@@ -6,12 +6,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
+
+    // Метод который заполняет логин и пороль затем нажимает на кнопку продолжить
     public VerifcationPage validLogin(DataUser.UserUnfo unfo) {
         $("[data-test-id=login] input").setValue(unfo.getLogin());
         $("[data-test-id=password] input").setValue(unfo.getPassword());
         $("[data-test-id=action-login]").click();
-        //  $("[data-test-id=code] input").setValue(unfo.getVerification());
         return new VerifcationPage();
-//Нужно реализовать класс в котором будет логика авторизации на странице логина
     }
 }

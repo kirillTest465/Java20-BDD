@@ -10,10 +10,12 @@ public class VerifcationPage {
     private final SelenideElement codeFied = $("[data-test-id=code] input");
     private final SelenideElement verifeButton = $("[data-test-id=action-verify]");
 
+    // Конструктор который проверяет видимость поля ввода кода верификации
     public VerifcationPage() {
         codeFied.shouldBe(Condition.visible);
     }
 
+    // метод который заполняет код верификации и жмет на кнопку продолжить
     public DashboardPage validVerify(String verificationCode) {
         codeFied.setValue(DataUser.getUserUnfo().getVerification());
         verifeButton.click();
