@@ -8,6 +8,7 @@ import ru.netology.transfer.data.DataUser;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
+
 public class DashboardPage {
     private final String balanceStart = "баланс: ";
     private final String balanceFinish = " р.";
@@ -23,9 +24,10 @@ public class DashboardPage {
 
     // Метод для получения баланса карты
     public int getcardBalance(DataUser.CardInfo cardInfo) {
-        var text = cards.first().getText();
+        var text = cards.findBy(Condition.text(cardInfo.getCardNumber().substring(15))).getText();
         return extractBalance(text);
     }
+
 
     // Метод кликает на кнопку пополнить напротив карты с номером "5559 0000 0000 0001"
     public TransferPage selectCardToTransfer(DataUser.CardInfo cardInfo) {
