@@ -31,7 +31,7 @@ public class TransferPage {
     }
 
 
-    // Метод который заполняет поле сумма,откуда будет делатся перевод и кликает на кнопку продолжить
+    // Метод который заполняет поле сумма,откуда будет делатся перевод и кликает на кнопку пополнить
     private void makeTransfer(String amountToTransfer, DataUser.CardInfo cardInfo) {
         amountInput.setValue(amountToTransfer);
         fromInput.setValue(cardInfo.getCardNumber());
