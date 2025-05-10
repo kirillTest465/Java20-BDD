@@ -6,12 +6,12 @@ import ru.netology.transfer.data.DataUser;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class VerifcationPage {
+public class VerificationPage {
     private final SelenideElement codeFied = $("[data-test-id=code] input");
     private final SelenideElement verifeButton = $("[data-test-id=action-verify]");
 
     // Конструктор который проверяет видимость поля ввода кода верификации
-    public VerifcationPage() {
+    public VerificationPage() {
         codeFied.shouldBe(Condition.visible);
     }
 

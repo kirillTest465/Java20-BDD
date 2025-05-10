@@ -8,11 +8,11 @@ public class LoginPage {
 
 
     // Метод который заполняет логин и пороль затем нажимает на кнопку продолжить
-    public VerifcationPage validLogin(DataUser.UserUnfo unfo) {
+    public VerificationPage validLogin(DataUser.UserUnfo unfo) {
         $("[data-test-id=login] input").setValue(unfo.getLogin());
         $("[data-test-id=password] input").setValue(unfo.getPassword());
         $("[data-test-id=action-login]").click();
-        return new VerifcationPage();
+        return new VerificationPage();
     }
 
 
